@@ -1,28 +1,28 @@
 services:
   ollama:
-    image: ollama/ollama:0.12.0   # o :latest
+    image: ollama/ollama:latest
     container_name: ollama
-    restart: unless-stopped
     ports:
-      - "11434:11434"             # API di Ollama
+      - "11434:11434"
     volumes:
       - ollama_models:/root/.ollama
+    restart: unless-stopped
 
   cheshire-cat-core:
     image: ghcr.io/cheshire-cat-ai/core:latest
     container_name: cheshire_cat_core
-    restart: unless-stopped
     ports:
-      - "1865:80"      # Admin UI: http://localhost:1865
-      - "8080:8080"    # Chat API
-    volumes:
-      - ./static:/app/cat/static
-      - ./plugins:/app/cat/plugins
-      - ./data:/app/cat/data
+      - "1865:80"
+      - "8080:8080"
+    restart: unless-stopped
     environment:
       CAT_LLM_PROVIDER: "ollama"
       CAT_LLM_BASE_URL: "http://ollama:11434"
-      CAT_LLM_MODEL: "llama3.2:3b"   # oppure llama3.2:1b
+      CAT_LLM_MODEL: "llama3.2:3b"
+    volumes:
+      - "C:/Users/Ale/Desktop/cheshire_cat/static:/app/cat/static"
+      - "C:/Users/Ale/Desktop/cheshire_cat/plugins:/app/cat/plugins"
+      - "C:/Users/Ale/Desktop/cheshire_cat/data:/app/cat/data"
 
 volumes:
   ollama_models:

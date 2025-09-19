@@ -1,0 +1,7 @@
+{
+  "name": "ai_experience_judge",
+  "version": "0.1.0",
+  "description": "Valuta esperienza AI utente e adatta il prompt.",
+  "author": "Ale",
+  "enabled": true
+}

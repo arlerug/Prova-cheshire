@@ -1,0 +1,13 @@
+# AI Experience Judge log
+# Created: 2025-09-19T08:28:36.516729
+
+--- 2025-09-19T08:33:15.455374 ---
+User text: cos'è random forest
+Judgement: {"capabilities_known": ["Random Forest", "Algoritmo di apprendimento"], "concepts_unknown": ["Algoritmo di decisione", "Mappatura lineare"], "misconceptions": ["Algoritmo di regressione", "Classificazione binaria"], "seniority_guess": "intermedio", "confidence": 0.8}
+Instructions:
+ - L'utente conosce Random Forest
+ - L'utente conosce Algoritmo di apprendimento
+ - L'utente non sa cos'è Algoritmo di decisione
+ - L'utente non sa cos'è Mappatura lineare
+ - L'utente potrebbe avere un fraintendimento su Algoritmo di regressione
+ - L'utente potrebbe avere un fraintendimento su Classificazione binaria
