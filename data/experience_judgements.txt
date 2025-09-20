@@ -11,3 +11,14 @@ Instructions:
  - L'utente non sa cos'è Mappatura lineare
  - L'utente potrebbe avere un fraintendimento su Algoritmo di regressione
  - L'utente potrebbe avere un fraintendimento su Classificazione binaria
+
+--- 2025-09-19T12:10:19.215022 ---
+User text: cos'è ai
+Judgement: {"capabilities_known": ["AI", "Intelligenza Artificiale"], "concepts_unknown": ["Machine Learning", "Apprendimento di Macchina"], "misconceptions": ["Modello di Apprendimento", "Algoritmo di Apprendimento"], "seniority_guess": "intermedio", "confidence": 0.8}
+Instructions:
+ - L'utente conosce AI
+ - L'utente conosce Intelligenza Artificiale
+ - L'utente non sa cos'è Machine Learning
+ - L'utente non sa cos'è Apprendimento di Macchina
+ - L'utente potrebbe avere un fraintendimento su Modello di Apprendimento
+ - L'utente potrebbe avere un fraintendimento su Algoritmo di Apprendimento

@@ -1,0 +1,53 @@
+"https://it.wikipedia.org/wiki/Visura_catastale",
+    "https://it.wikipedia.org/wiki/Visura_ipotecaria",
+    "https://it.wikipedia.org/wiki/Atto_notarile",
+    "https://it.wikipedia.org/wiki/Trascrizione_%28diritto%29",
+    "https://it.wikipedia.org/wiki/Ipoteca",
+    "https://it.wikipedia.org/wiki/Pignoramento",
+    "https://it.wikipedia.org/wiki/Espropriazione_forzata",
+    "https://it.wikipedia.org/wiki/Catasto_in_Italia",
+    "https://it.wikipedia.org/wiki/Agenzia_del_territorio",
+    "https://it.wikipedia.org/wiki/Agenzia_delle_entrate",
+    "https://it.wikipedia.org/wiki/Intavolazione",
+    "https://it.wikipedia.org/wiki/Sistema_catastale_tavolare",
+
+    # Agenzia delle Entrate (ufficiali)
+    "https://www.agenziaentrate.gov.it/portale/schede/fabbricatiterreni/visura-catastale/visura-catastale-online",
+    "https://www.agenziaentrate.gov.it/portale/-/guida-al-servizio-visura-catastale-telematica",
+    "https://www.agenziaentrate.gov.it/portale/schede/fabbricatiterreni/ispezione-ipotecaria/scheda-info-ispezione-ipotecaria",
+
+    # Studi notarili e professionisti
+    "https://www.notaiomoccia.it/i-documenti-necessari-per-la-vendita/",
+    "https://www.unionegeometri.com/visura-catastale-guida-completa/",
+    "https://notaio.io/news/curiosita/che-cosa-sono-le-visure-ipotecarie-catastali-e-planimetrie-catastali",
+    "https://www.notaiofacile.it/blog/atto-notarile-regolarita-catastale.html",
+    "https://www.docfafacile.it/visure-catastali/"
+
+GeoLIVE (forum) → Richiesta inserimento intestatari in visura catastale
+
+Tom’s HW (forum) → Visura catastale storica per ISEE o altro
+
+GeoLIVE (forum) → Ipoteca contestuale a frazionamento
+
+Forum Catasto → Dati catastali per bollette / contatori
+
+Banco BPM → Pignoramento conto corrente: cos’è e come funziona
+
+Fisco e Tasse → Come si richiede la visura catastale: servizi gratuiti e a pagamento
+
+Wikipedia → Voltura catastale
+
+ # Forum Catasto
+    "https://forum.catasto.it/forum/read/6.html",
+    "https://forum.catasto.it/forum/read/2.html%26p%3D17",
+
+    # Immobilio
+    "https://www.immobilio.it/threads/visure-catastali-e-piantine.57111/",
+
+
+    # TopGeometri
+    "https://forum.topgeometri.it/t/acquisto-con-riserva-1/3499",
+    "https://forum.topgeometri.it/t/richiesta-planimetrie-immobile/8447",
+
+    # GeoLIVE
+    "https://www.geolive.org/forum/pregeo-e-docfa/principianti-allo-sbaraglio/atto-notarile-e-suo-deposito-in-conservatoria-immobiliare-30262/"
