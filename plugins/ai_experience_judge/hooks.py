@@ -1,47 +1,77 @@
-# plugins/ai_experience_judge/hooks.py
+import re
 from cat.mad_hatter.decorators import hook
 
-# Prompt di sistema "professionale"
-PRO_SYSTEM = """
-You are a professional AI engineer & MLOps consultant.
-Communicate clearly, precisely, and concisely. Prefer bullet points when helpful.
-Be practical, evidence-based, and avoid whimsical or role-play tones.
-If you are unsure, say so and propose next steps or assumptions.
-Always respond in Italian, unless the user writes in another language.
-"""
+# Mapping semplice dei livelli per chiarezza
+BEGINNER = "beginner"
+INTERMEDIATE = "intermediate"
+EXPERT = "expert"
 
-@hook(priority=1)  # sostituisce il prefix di default (niente "gatto di Alice")
+def _judge_experience(text: str) -> str:
+    """
+    Euristiche leggere:
+    - esperto: termini tecnici specifici, acronimi, riferimenti normativi puntuali
+    - intermedio: linguaggio semi-tecnico, menziona documenti ma non usa gergo stretto
+    - principiante: richieste generiche, niente termini specialistici
+    """
+    t = (text or "").lower()
+
+    expert_kw = [
+        "ex art.", "art.", "c.p.c", "cartabia", "trascrizione", "iscrizione",
+        "ipotecaria ventennale", "frazionamento", "subalterno", "classamento",
+        "nota di trascrizione", "rogito", "atto di provenienza", "gravami"
+    ]
+    interm_kw = [
+        "visura", "planimetria", "catasto", "fabbricati", "terreni",
+        "proprietario precedente", "ipoteca", "pignoramento", "mutuo"
+    ]
+
+    expert_hits = sum(1 for k in expert_kw if k in t)
+    interm_hits = sum(1 for k in interm_kw if k in t)
+
+    if expert_hits >= 2:
+        return EXPERT
+    if expert_hits == 1 or interm_hits >= 2:
+        return INTERMEDIATE
+    return BEGINNER
+
+@hook(priority=4)
+def before_cat_reads_message(message, cat):
+    """
+    - Se è il 'bootstrap' del frontend ("/start"), facciamo produrre al modello solo un saluto.
+    - Altrimenti, stimiamo il livello di esperienza e lo salviamo in cat.vars.
+    """
+    text = (message or {}).get("text") or ""
+
+    # Inizializzazione storage
+    if not hasattr(cat, "vars") or cat.vars is None:
+        cat.vars = {}
+
+    # 1) Primo messaggio di bootstrap dal frontend
+    if text.strip() == "/start":
+        cat.vars["force_greeting"] = True
+        # Non cambiamo il messaggio: lasciamo che scorra nella pipeline
+        return message
+
+    # 2) Judge esperienza su messaggi reali
+    lvl = _judge_experience(text)
+    cat.vars["user_experience"] = lvl
+    return message
+
+@hook(priority=100)
 def agent_prompt_prefix(prefix: str, cat) -> str:
-    j = getattr(cat, "vars", {}).get("user_judgement") or {}
-    level = j.get("seniority_guess") or getattr(cat, "vars", {}).get("user_level", "incerto")
-    knows = j.get("capabilities_known") or []
-    unknown = j.get("concepts_unknown") or []
-    mis = j.get("misconceptions") or []
+    """
+    Se siamo nel caso di saluto iniziale (force_greeting=True),
+    sovrascriviamo il prefix con un semplicissimo prompt per ottenere solo il greeting.
+    """
+    if getattr(cat, "vars", {}).get("force_greeting"):
+        # Prompt minimale: chiedi solo il saluto
+        return (
+            "SystemMessage\n\n"
+            "Parla in italiano, in modo cortese e conciso. Non chiedere dati personali.\n"
+            "Rispondi esclusivamente con: \"Come posso aiutarti?\"\n"
+        )
+    return prefix
 
-    lines = []
-    if level:
-        lines.append(f"User seniority: {level}.")
-    if knows:
-        lines.append("User knows: " + "; ".join(knows) + ".")
-    if unknown:
-        lines.append("Explain briefly: " + "; ".join(unknown) + ".")
-    if mis:
-        lines.append("Correct misconceptions about: " + "; ".join(mis) + ".")
-
-    profile = ""
-    if lines:
-        profile = "\n\n### User expertise profile\n" + "\n".join(lines) + "\n"
-
-    # ritorna SOLO il nostro prompt professionale + eventuale profilo
-    return PRO_SYSTEM + profile
-
-@hook(priority=10)  # regola di stile finale in base al livello
-def agent_prompt_suffix(prompt_suffix: str, cat) -> str:
-    level = getattr(cat, "vars", {}).get("user_level", "intermedio")
-    style = {
-        "novizio":    "Usa linguaggio semplice, esempi concreti, passi guidati, niente gergo.",
-        "intermedio": "Usa terminologia standard, best practice operative, esempi pratici.",
-        "esperto":    "Sii conciso e tecnico; includi trade-off, parametri, limiti e riferimenti.",
-        "incerto":    "Fai 1-2 domande mirate per calibrare il livello, poi procedi."
-    }.get(level, "Usa tono professionale e chiaro.")
-    return prompt_suffix + f"\n\n# Style rule\n{style}\n"
+@hook(priority=100)
+def agent_prompt_suffix(suffix: str, cat) -> str:
+    return ""

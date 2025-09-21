@@ -1,0 +1,7 @@
+{
+  "name": "rag_retriever",
+  "version": "0.1.0",
+  "description": "Agente per il retrieval: recupera passaggi da Qdrant via Cheshire e li fornisce come contesto alle risposte.",
+  "author": "Ale",
+  "enabled": true
+}

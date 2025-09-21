@@ -3,7 +3,12 @@ import json, re, os
 from datetime import datetime
 
 SCHEMA_GUIDE = """
-Sei un esperto di AI/ML e MLOps. Valuta quanto emerge dal MESSAGGIO UTENTE.
+Sei un esperto di • Relazione preliminare o prodromica
+  • Trascrizione o iscrizione
+  • Certificazione notarile (ex Art. 567 C.P.C.)
+  • Visure catastali (storiche per immobile: Fabbricati/Terreni)
+  • Atti notarili o giudiziari (atti certi, atti di provenienza)
+  • Documenti sui gravami (mutui, ipoteche, formalità pendenti). Valuta quanto emerge dal MESSAGGIO UTENTE.
 Rispondi SOLO in JSON valido, senza testo extra, con questo schema:
 
 {
