@@ -22,3 +22,14 @@ Instructions:
  - L'utente non sa cos'è Apprendimento di Macchina
  - L'utente potrebbe avere un fraintendimento su Modello di Apprendimento
  - L'utente potrebbe avere un fraintendimento su Algoritmo di Apprendimento
+
+--- 2025-09-21T16:07:28.200141 ---
+User text: il mio immobile è pignorato?
+Judgement: {"capabilities_known": ["Trascrizione o iscrizione", "Certificazione notarile"], "concepts_unknown": ["Attivazione del procedimento di pignoramento", "Durata e condizioni del pignoramento"], "misconceptions": ["Pignoramento = ipoteche", "Pignoramento = gravami"], "seniority_guess": "incerto", "confidence": 0.8}
+Instructions:
+ - L'utente conosce Trascrizione o iscrizione
+ - L'utente conosce Certificazione notarile
+ - L'utente non sa cos'è Attivazione del procedimento di pignoramento
+ - L'utente non sa cos'è Durata e condizioni del pignoramento
+ - L'utente potrebbe avere un fraintendimento su Pignoramento = ipoteche
+ - L'utente potrebbe avere un fraintendimento su Pignoramento = gravami

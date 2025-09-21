@@ -1,0 +1,21 @@
+# Ambiente virtuale
+.venv/
+
+# Dataset e knowledge base
+data/
+data_chunks/
+data_embeddings_e5/
+data_embeddings_v4/
+kb_rag_wikipedia/
+
+# File temporanei / cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# File log
+*.log
+
+# Config locali (se servono)
+.env
