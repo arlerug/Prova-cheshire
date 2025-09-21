@@ -19,3 +19,5 @@ __pycache__/
 
 # Config locali (se servono)
 .env
+
+qdrant_storage/
