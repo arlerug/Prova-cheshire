@@ -1,7 +1,0 @@
-{
-  "name": "ai_experienced_judge",
-  "version": "0.1.0",
-  "description": "Classifica il livello di esperienza dell'utente e gestisce il saluto iniziale.",
-  "author": "Ale",
-  "enabled": true
-}

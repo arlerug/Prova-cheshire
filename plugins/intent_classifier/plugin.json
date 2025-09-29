@@ -1,0 +1,9 @@
+{
+  "name": "intent_classifier",
+  "version": "0.1.0",
+  "description": "Classifica le richieste dell'utente tra 'info' (analisi e supporto informativo) e 'download' (richiesta diretta di documento).",
+  "author": "WeSafe AI",
+  "license": "MIT",
+  "requirements": [],
+  "entrypoint": "hooks.py"
+}

@@ -27,6 +27,16 @@ services:
       - "11434:11434"
     volumes:
       - ollama_models:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
     healthcheck:
       test: ["CMD", "ollama", "list"]
       interval: 30s
@@ -43,12 +53,12 @@ services:
     environment:
       CAT_LLM_PROVIDER: "ollama"
       CAT_LLM_BASE_URL: "http://ollama:11434"
-      CAT_LLM_MODEL: "llama3.2:3b"
+      CAT_LLM_MODEL: "llama3.1:8b"
+      CCAT_LOG_LEVEL: "DEBUG"
     depends_on:
       - qdrant
       - ollama
     volumes:
-      # Questi bind vanno bene; assicurati che le cartelle esistano sul tuo host Windows
       - "C:/Users/Ale/Desktop/cheshire_cat/static:/app/cat/static"
       - "C:/Users/Ale/Desktop/cheshire_cat/plugins:/app/cat/plugins"
       - "C:/Users/Ale/Desktop/cheshire_cat/data:/app/cat/data"
